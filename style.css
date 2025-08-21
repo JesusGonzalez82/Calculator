@@ -1,20 +1,31 @@
 body{
     display: flex;
     justify-content: center;
+    align-items: center;
     min-height: 100vh;
     margin: 0;
     background-color: rgb(121, 199, 243);
     font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
 }
 
 .calculadora{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 5px 5px;
     width: 215px;
-    height: 270px;
+    height: 320px;
     margin-top: 20px;
+    /* añado efecto modal para la calculadora*/
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    /*Ajusto el tamaño para compesar el padding*/
+    box-sizing: border-box;
+    width: 265px;
+    height: 380px;
 }
 
 .pantalla{
@@ -29,6 +40,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.4em;
+    font-weight: bold;
 }
 
 .boton{
@@ -41,10 +54,14 @@ body{
     cursor: pointer;
     background-color: rgb(0, 120, 195);
     transition: background-color 0.3s ease;
+    font-size: 1.1em;
+    font-weight: bold;
+    user-select: none;
 }
 
 .boton:hover{
     background-color: rgb(57, 144, 197);
+    transform: translateY(-2px);
 }
 
 .boton.operacion{
@@ -53,6 +70,7 @@ body{
 
 .boton.operacion:hover{
     background-color: rgb(53, 170, 255);
+    transform: translateY(-2px);
 }
 
 .boton.especial{
@@ -61,6 +79,45 @@ body{
 
 .boton.especial:hover{
     background-color: rgb(254, 123, 76);
+    transform: translateY(-2px);
+}
+
+.boton:active{
+    transform: translateY(0);
+    transition: transform 0.1s ease;
+}
+
+/* Historial */
+
+.historial-panel{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    max-height: 400px;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/*Responsive*/
+
+@media (max-width: 480px){
+    .calculadora{
+        width: 240px;
+        height: 290px;
+        padding: 15px;
+    }
+    .pantalla{
+        font-size: 1.2em;
+    }
+    .boton{
+        font-size: 1em;
+    }
 }
 
 

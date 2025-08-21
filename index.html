@@ -1,0 +1,57 @@
+<!-- Diseña una calculadora que incluya todas las operaciones básicas y los números del 0 al 9
+ Incluye un visor para el resultado de las operaciones.
+ Al pasar el ratón por cualquiera de los botones tiene que cambiar de color.
+ La calculadora la mostraresmos centrada en la parte superior de la pantalla.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="calculadora">
+        <!-- Pantalla -->
+        <div class="pantalla" id="pantalla">0 </div>
+        <!-- Primera fila de botones -->
+        <div class="boton numero" onclick="agregar('7')">7</div>
+        <div class="boton numero" onclick="agregar('8')">8</div>
+        <div class="boton numero" onclick="agregar('9')">9</div>
+        <div class="boton operacion"onclick="agregar('/')">/</div>
+        <!-- Segunda fila de botones -->
+        <div class="boton numero" onclick="agregar('4')">4</div>
+        <div class="boton numero" onclick="agregar('5')">5</div>
+        <div class="boton numero" onclick="agregar('6')">6</div>
+        <div class="boton operacion" onclick="agregar('*')">*</div>
+        <!-- Tercera fila de botones -->
+        <div class="boton numero" onclick="agregar('1')">1</div>
+        <div class="boton numero" onclick="agregar('2')">2</div>
+        <div class="boton numero" onclick="agregar('3')">3</div>
+        <div class="boton operacion" onclick="agregar('-')">-</div>
+        <!-- Cuarta fila de botones -->
+        <div class="boton especial" onclick="limpiarTodo()">C</div>
+        <div class="boton numero" onclick="agregar('0')">0</div>
+        <div class="boton operacion" onclick="agregar('+')">+</div>
+        <div class="boton operacion" onclick="agregar('=')">=</div>
+        <!-- Quinta fila de botones -->
+        <div class="boton numero" onclick="agregar('.')">.</div>
+        <div class="boton especial" onclick="borrarUltimo()">←</div>
+        <div class="boton especial" onclick="toogleHistorial()"><span class="material-icons">history</span></div>
+        <div class="boton especial" onclick="cambiarModo()"><span class="material-icons">calculate</span></div>
+
+        <!-- Panel de historial (oculto por defecto) -->
+         <div class="historial-panel" id="historial-panel">
+            <div class="historial-header">
+                <h3>Historial</h3>
+                <button onclick="limpiarHistorial()" class="btn-limpiar">Limpiar</button>
+            </div>
+            <div class="historial-lista" id="historial-lista">
+                <p class="historial-vacio">No hay operaciones aún</p>
+            </div>
+         </div>
+    </div>
+</body>
+</html>
