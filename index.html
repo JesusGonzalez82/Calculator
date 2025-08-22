@@ -9,13 +9,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/main.js"></script>
 </head>
 <body>
     <div class="calculadora">
         <!-- Pantalla -->
-        <div class="pantalla" id="pantalla">0 </div>
+        <div class="pantalla" id="pantalla">0</div>
         <!-- Primera fila de botones -->
         <div class="boton numero" onclick="agregar('7')">7</div>
         <div class="boton numero" onclick="agregar('8')">8</div>
@@ -41,17 +42,22 @@
         <div class="boton especial" onclick="borrarUltimo()">←</div>
         <div class="boton especial" onclick="toogleHistorial()"><span class="material-icons">history</span></div>
         <div class="boton especial" onclick="cambiarModo()"><span class="material-icons">calculate</span></div>
+    </div>
 
         <!-- Panel de historial (oculto por defecto) -->
-         <div class="historial-panel" id="historial-panel">
-            <div class="historial-header">
-                <h3>Historial</h3>
-                <button onclick="limpiarHistorial()" class="btn-limpiar">Limpiar</button>
-            </div>
-            <div class="historial-lista" id="historial-lista">
-                <p class="historial-vacio">No hay operaciones aún</p>
-            </div>
-         </div>
+    <div class="historial-panel" id="historial-panel">
+        <div class="historial-header">
+            <h3>Historial</h3>
+            <button onclick="limpiarHistorial()" class="btn-limpiar">Limpiar</button>
+        </div>
+        <div class="historial-lista" id="historial-lista">
+            <p class="historial-vacio">No hay operaciones aún</p>
+        </div>
     </div>
+
+    <div class="modo-indicator" id="modo-indicator">
+        Básico
+    </div>
+    
 </body>
 </html>
