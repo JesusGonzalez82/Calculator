@@ -93,7 +93,7 @@ body{
 .historial-panel{
     position: fixed;
     top: 50%;
-    left: 50%;
+    right: 60%;
     transform: translate(-50%, -50%) scale(0);
     background: white;
     border-radius: 15px;
@@ -105,12 +105,12 @@ body{
     transition: all 0.3s ease;
 }
 
-.historial-panel.active{
+.historial-panel.show{
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
 
-.historial.header{
+.historial-header{
     padding: 20px 20px 10px;
     border-bottom: 1px solid #eee;
     display: flex;
@@ -118,7 +118,7 @@ body{
     align-items: center;
 }
 
-.historial.header h3{
+.historial-header h3{
     margin: 0;
     color: #333;
 }
