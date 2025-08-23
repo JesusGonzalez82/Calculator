@@ -76,5 +76,5 @@ Puedes usarlo, modificarlo y distribuirlo libremente, siempre que mantengas la a
 
 👨‍💻 Autor
 
-Jesús González
+Jesús González.
 Proyecto desarrollado como práctica de Desarrollo Web.
