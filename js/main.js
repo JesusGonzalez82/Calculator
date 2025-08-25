@@ -20,12 +20,23 @@ function agregar(valor){
     }
 
     if(['+', '-', '*', '/'].includes(valor)){
-        manejarOperador(valor);
-        return;
-    }
+        // Caso especial: "-" al inicio o después de otro operador => número negativo
+        if (valor === '-' && (
+            pantalla.textContent === '0' || 
+            debeResetear || 
+            ['+', '-', '*', '/'].includes(pantalla.textContent.slice(-1))
+        )){
+            if (pantalla.textContent === '0' || debeResetear){
+                pantalla.textContent = '-'; // reemplaza el 0 o reset
+            } else {
+                pantalla.textContent += '-'; // agrega signo tras operador
+            }
+            operacionActual = '-';
+            debeResetear = false;
+            return;
+        }
 
-    if (valor === '.'){
-        agregarDecimal();
+        manejarOperador(valor);
         return;
     }
 
