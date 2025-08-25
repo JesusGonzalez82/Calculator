@@ -92,8 +92,8 @@ body{
 
 .historial-panel{
     position: fixed;
-    top: 50%;
-    right: 60%;
+    top: 24%;
+    right: 34.5%;
     transform: translate(-50%, -50%) scale(0);
     background: white;
     border-radius: 15px;

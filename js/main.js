@@ -65,6 +65,14 @@ function manejarOperador(nuevoOperador){
         operacionAnterior = valorActual;
     }else if (operador){
         const resultado = realizarCalculo();
+        if (resultado === null){
+            if (operacionActual === '0' && operador === '/'){
+                mostrarError('Error: No se puede dividir entre 0');
+            } else {
+                mostrarError('Error en la operación');
+            }
+            return;
+        }
         pantalla.textContent = formatearNumero(resultado);
         operacionAnterior = resultado;
     }
@@ -78,7 +86,7 @@ function realizarCalculo(){
     const anterior = parseFloat(operacionAnterior);
     const actual = parseFloat(operacionActual);
 
-    if (isNaN(anterior) || isNaN(actual)) return actual;
+    if (isNaN(anterior) || isNaN(actual)) return null;
 
     switch(operador){
         case '+':
@@ -90,7 +98,7 @@ function realizarCalculo(){
         case '/':
             if (actual === 0){
                 mostrarError('Error: No se puede dividir entre 0');
-                return anterior
+                return null;
             }
             return anterior / actual;
         default:
@@ -100,7 +108,12 @@ function realizarCalculo(){
 
 // Funcion Calcular (cuando presionamos la tecla =)
 function calcular(){
-    if (operador === null || debeResetear) return;
+    // if (operador === null || debeResetear) return;
+
+    if (!operacionAnterior || !operacionActual || !operador){
+        mostrarError('Error al realizar la operación');
+        return;
+    }
 
     const resultado = realizarCalculo();
     const operacionCompleta = `${operacionAnterior} ${operador} ${operacionActual} = ${formatearNumero(resultado)}`;
@@ -117,8 +130,8 @@ function calcular(){
 // Formatear números
 
 function formatearNumero(numero){
-    if (numero === Infinity || numero === -Infinity || isNaN(numero) ){
-        return 'error';
+    if (numero === null || numero === Infinity || numero === -Infinity || isNaN(numero) ){
+        return 'Error';
     }
 
     if (Number.isInteger(numero)){
@@ -183,7 +196,7 @@ function usarDelHistorial(resultado){
     pantalla.textContent = resultado;
     operacionActual = resultado;
     debeResetear = true;
-    toogleHistorial();
+    toggleHistorial();
 }
 
 function limpiarHistorial(){
@@ -191,7 +204,7 @@ function limpiarHistorial(){
     actualizarHistorialUI();
 }
 
-function toogleHistorial(){
+function toggleHistorial(){
     historialPanel.classList.toggle('show');
 }
 
@@ -265,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // Cerrar historial al hacer clic fuera
     document.addEventListener('click', function(event) {
         if (historialPanel && !historialPanel.contains(event.target) && 
-            !event.target.closest('[onclick*="toogleHistorial"]')) {
+            !event.target.closest('[onclick*="toggleHistorial"]')) {
             historialPanel.classList.remove('show');
         }
     });
