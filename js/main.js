@@ -110,7 +110,7 @@ function realizarCalculo(){
 function calcular(){
     // if (operador === null || debeResetear) return;
 
-    if (!operacionAnterior || !operacionActual || !operador){
+    if (operacionAnterior === '' || operacionActual === '' || operador === null){
         mostrarError('Error al realizar la operación');
         return;
     }
