@@ -92,7 +92,7 @@ body{
 
 .historial-panel{
     position: absolute;
-    bottom: 60%;
+    bottom: 58%;
     left:50%;
     transform: translate(-50%, -50%) scale(0);
     background: white;
